@@ -1,4 +1,4 @@
-const dashboard = document.querySelector("#dashboard");
+// const dashboard = document.querySelector("#dashboard");
 // const loginFormClass = document.querySelector(".login-form")
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         loginFormContainer.remove();
         // display the dashboard
     } else {
-        // do nothing
+        loginFormContainer.style.display = "block";
     }
 
 });
@@ -33,21 +33,7 @@ loginForm.addEventListener('submit', async (e) => {
     const data = await response.json();
 
     console.log(await data)
-    message.textContent = data.message;
+    // message.textContent = data.message;
 });
 
-dashboard.addEventListener("click", async () => {
-    const response = await fetch('http://localhost:3000/dashboard', {
-        method: 'GET',
-        credentials: "include", 
-        
-    });
-    const data = await response.text();
-    message.textContent = data.message;
-    console.log(data)
-})
 
-
-reloadPage.addEventListener("click", () => {
-    location.reload();
-})

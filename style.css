@@ -1,0 +1,205 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root{
+    --color-primary: #7380ec;
+    --color-danger: #ff7782;
+    --color-success: #41f1b6;
+    --color-warning: #ffbb55;
+    --color-white: #fff;
+    --color-info: #7d8da1;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-dark-varient: #677483;
+    --color-background: #f6f6f9;
+    
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --box-shadow: 0 2rem 3rem var(--color-light)    
+}
+
+.dark-theme{
+    --color-background: #181a1e;
+    --color-white: #202528;
+    --color-dark: #edeffd;
+    --color-dark-varient: #a3bdcc;
+    --color-light: rgba(0,0,0,0.4);
+    --box-shadow: 0 2rem 3rem var(--color-light)
+}
+
+
+*{
+    margin:0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 14px;
+    scroll-behavior: smooth;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+    font-size: .88rem;
+    background: var(--color-background);
+    /* user-select: none; */
+    overflow-x: hidden;
+    color: var(--color-dark);
+}
+*{
+    color: var(--color-dark);
+}
+img{
+    display: block;
+    width: 100%;
+}
+h1{
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+h2{font-size: 1.4rem;}
+h3{font-size: .87rem;}
+h4{font-size: .8rem;}
+h5{font-size: .77rem;}
+small{font-size: .75rem;}
+
+.text-muted{color: var(--color-info);}
+p{color: var(--color-dark-varient);}
+b{color: var(--color-dark);}
+
+.primary{color: var(--color-primary);}
+.danger{color: var(--color-danger);}
+.success{color: var(--color-success)}
+.warning{color: var(--color-warning);}
+
+.container{
+    position: relative;
+    display: grid;
+    width: 93%;
+    margin: 0 3rem;
+    gap: 1.8rem;
+    grid-template-columns: 14rem auto 23rem;
+    padding-top: 4rem;
+}
+header h3{font-weight: 500;} 
+header{
+    position: fixed;
+    width: 100vw;
+    z-index: 1000;
+    background-color: var(--color-background);
+}
+header.active{box-shadow: var(--box-shadow);}
+header .logo{
+    display: flex;
+    gap: .8rem;
+    user-select: none;
+    margin-right: auto;
+}
+/* header .logo img{
+    width: 2rem;
+    height: 2rem;
+} */
+
+header,
+header .navbar{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 3rem;
+    color: var(--color-info);
+}
+header .navbar a{
+    display: flex;
+    margin-left: 2rem;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    height: 3.7rem;
+    transition: all 300ms ease;
+    padding: 0 2rem;
+}
+header .navbar a:hover {
+    padding-top: 1.5rem;
+}
+header .navbar a.active{
+    background: var(--color-light);
+    color: var(--color-primary);
+}
+header .navbar a.active::before{
+    content: "";
+    background-color: var(--color-primary);
+    position: absolute;
+    height: 5px;
+    width: 100%;
+    left: 0;top: 0;
+}
+header #profile-btn{
+    display: none;
+    font-size: 2rem;
+    margin: .5rem 2rem 0 0;
+    cursor: pointer;
+}
+
+#loginFormContainer {
+    display: none;
+}
+
+header{position: relative;}
+.login-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 90vh;
+}
+.login-container form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: var(--border-radius-2);
+    padding : 3.5rem;
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow);
+    width: 95%;
+    max-width: 32rem;
+}
+.login-container form:hover{box-shadow: none;}
+.login-container form input[type=text], .login-container form input[type=password]{
+    border: none;
+    outline: none;
+    border: 1px solid var(--color-light);
+    background: transparent;
+    height: 2rem;
+    width: 100%;
+    padding: 0 .5rem;
+}
+.login-container form .box{
+    padding: .5rem 0;
+}
+.login-container form .box p{
+    line-height: 2;
+}
+.login-container form h2+p{margin: .4rem 0 1.2rem 0;} 
+.btn{
+    background: none;
+    border: none;
+    border: 2px solid var(--color-primary) !important;
+    border-radius: var(--border-radius-1);
+    padding: .5rem 1rem;
+    color: var(--color-white);
+    background-color: var(--color-primary);
+    cursor: pointer;
+    margin: 1rem 1.5rem 1rem 0;
+    margin-top: 1.5rem;
+}
+.btn:hover{
+    color: var(--color-primary);
+    background-color: transparent;
+}
+
