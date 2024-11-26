@@ -26,10 +26,18 @@ function generateSessionId() {
 
 app.get('/', (req, res) => {
 
-    console.log(req.ip);
-    res.json({
-        done: 1
-    })
+    console.log(req.cookies.sessionId);
+
+    if (sessions[req.cookies.sessionId]) {
+        res.json({
+            loggedIn: "true"
+        })
+    } else {
+        res.json({
+            loggedIn: "false"
+        })
+    }
+    
 })
 
 app.post('/login', (req, res) => {
@@ -53,13 +61,13 @@ app.post('/login', (req, res) => {
 
 app.get('/dashboard', (req, res) => {
     const sessionId = req.cookies;
-    console.log(sessionId.sessionId)
+    // console.log(sessionId.sessionId)
     // if (sessions[sessionId]) {
     //     return res.json({ success: true, message: `Welcome back, ${sessions[sessionId]}!` });
     // }
 
     // return res.status(401).json({ success: false, message: 'Please log in' });
-    
+
 });
 
 app.listen(3000, () => {
