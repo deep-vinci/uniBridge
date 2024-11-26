@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
+const cookieMaxAge = 7 * 24 * 60 * 60 * 1000;
+
 const app = express();
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -25,16 +27,13 @@ function generateSessionId() {
 
 
 app.get('/', (req, res) => {
-
-    console.log(req.cookies.sessionId);
-
     if (sessions[req.cookies.sessionId]) {
         res.json({
-            loggedIn: "true"
+            loggedIn: 1
         })
     } else {
         res.json({
-            loggedIn: "false"
+            loggedIn: 0
         })
     }
     
@@ -50,7 +49,7 @@ app.post('/login', (req, res) => {
         sessions[sessionId] = username;
         // console.log(sessions);
         // Set a cookie that lasts for 1 week
-        res.cookie('sessionId', sessionId, { maxAge: 7 * 24 * 60 * 60 * 1000 , sameSite: 'None', secure: true });
+        res.cookie('sessionId', sessionId, { maxAge: cookieMaxAge , sameSite: 'None', secure: true });
 
         res.json({ success: true, message: 'Logged in!', session: sessions });
     } else {

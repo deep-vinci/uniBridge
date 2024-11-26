@@ -1,11 +1,20 @@
 const dashboard = document.querySelector("#dashboard");
+// const loginFormClass = document.querySelector(".login-form")
 
 document.addEventListener("DOMContentLoaded", async () => {
     const response = await fetch('http://localhost:3000/', {
         method: 'GET',
         credentials: "include", 
     });
-    console.log(await response.text())
+    const data = await response.json();
+    console.log(data)
+    if (data.loggedIn) {
+        loginFormContainer.remove();
+        // display the dashboard
+    } else {
+        // do nothing
+    }
+
 });
 
 loginForm.addEventListener('submit', async (e) => {
@@ -22,6 +31,7 @@ loginForm.addEventListener('submit', async (e) => {
     });
 
     const data = await response.json();
+
     console.log(await data)
     message.textContent = data.message;
 });
@@ -34,7 +44,7 @@ dashboard.addEventListener("click", async () => {
     });
     const data = await response.text();
     message.textContent = data.message;
-
+    console.log(data)
 })
 
 
