@@ -1,6 +1,9 @@
+const dashboard = document.querySelector("#dashboard");
+
 document.addEventListener("DOMContentLoaded", async () => {
     const response = await fetch('http://localhost:3000/', {
         method: 'GET',
+        credentials: "include", 
     });
     console.log(await response.text())
 });
@@ -15,9 +18,23 @@ loginForm.addEventListener('submit', async (e) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
+        credentials: "include", 
     });
 
     const data = await response.json();
+    console.log(await data)
     message.textContent = data.message;
 });
+
+dashboard.addEventListener("click", async () => {
+    const response = await fetch('http://localhost:3000/dashboard', {
+        method: 'GET',
+        credentials: "include", 
+        
+    });
+    const data = await response.text();
+    message.textContent = data.message;
+
+})
+
 
