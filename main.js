@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     } else {
         loginFormContainer.style.display = "block";
     }
-
 });
 
 loginForm.addEventListener('submit', async (e) => {
