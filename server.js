@@ -6,14 +6,13 @@ const cors = require('cors');
 const cookieMaxAge = 7 * 24 * 60 * 60 * 1000;
 
 const app = express();
-app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(bodyParser.json());
 
-const corsConfig = {
+app.use(cors({
     credentials: true,
     origin: true,
-};
-app.use(cors(corsConfig));
+}));
 
 const users = {
     testUser: "123", // Example user
@@ -36,7 +35,6 @@ app.get('/', (req, res) => {
             loggedIn: 0
         })
     }
-    
 })
 
 app.post('/login', (req, res) => {

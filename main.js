@@ -48,3 +48,6 @@ dashboard.addEventListener("click", async () => {
 })
 
 
+reloadPage.addEventListener("click", () => {
+    location.reload();
+})
